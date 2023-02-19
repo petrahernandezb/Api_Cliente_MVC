@@ -73,8 +73,8 @@
             view += `<div class="actions">
                         <!--Insertar aquí botones de "Añadir" y "Reset"-->
                         <button class="new">añadir</button>
-                        <button class="reset">resetear</button>
-                    </div>`;
+                        <button class="reset">reset</button>
+                     </div>`;
 
             return view;
         };
@@ -97,13 +97,9 @@
                         value="${pelicula.miniatura}">
                 </div>
                 <div class="actions">
-                    <button class="update" data-my-id="${i}">
-                        Actualizar
-                    </button>
-                    <button class="index">
-                        Volver
-                    </button>
-               `;
+                    <button class="update" data-my-id="${i}">Actualizar</button>
+                    <button class="index">Volver</button>
+                </div>`;
         }
 
         const showView = (pelicula) => {
@@ -113,8 +109,7 @@
             return `
              <p>
                 La película <b>${pelicula.titulo}</b> fue dirigida por
-                <b>${pelicula.director}</b>       
-             </p>
+                <b>${pelicula.director}</b></p>
              <div class="actions">
                 <button class="index">Volver</button>
              </div>`;
@@ -154,8 +149,8 @@
         const showContr = (i) => {
             // Completar: controlador que muestra la vista showView(pelicula)
             // ...
-            let pelicula = JSON.parse(localStorage.mis_peliculas);
-            document.getElementById('main').innerHTML = showView(mis_peliculas);
+            let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
+            document.getElementById('main').innerHTML = showView(pelicula);
         };
 
         const newContr = () => {
@@ -180,7 +175,7 @@
             };
 
             nuevaPelicula.push(pelicula);
-            localStorage.mis_peliculas = JSON.stringify(nuevasPeliculas);
+            localStorage.mis_peliculas = JSON.stringify(nuevaPelicula);
 
             indexContr();
         };
